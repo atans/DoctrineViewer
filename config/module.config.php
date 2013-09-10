@@ -14,10 +14,10 @@ return array(
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
-                    'metadata' => array(
+                    'entity' => array(
                         'type' => 'segment',
                         'options' => array(
-                            'route' => 'metadata[/]',
+                            'route' => 'entity[/]',
                             'defaults' => array(
                                 'action' => 'metadata'
                             ),
