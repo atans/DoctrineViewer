@@ -1,6 +1,6 @@
 {
     "name": "atans/doctrine-viewer",
-    "description" : "Doctrine viewer for Zend Framework 2",
+    "description" : "A simple Doctrine viewer module for Zend Framework 2",
     "type" : "library",
     "keywords" : [
         "zf2",
