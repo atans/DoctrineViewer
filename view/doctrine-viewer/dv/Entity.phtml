@@ -4,7 +4,7 @@ $this->headTitle($title);
 ?>
 
     <h3 class="page-header">
-        <a class="btn btn-default" href="<?php echo $this->url('db')?>">
+        <a class="btn btn-default" href="<?php echo $this->url('dv')?>">
             <i class="glyphicon glyphicon-arrow-left"></i>
         </a>
 
@@ -85,7 +85,7 @@ $this->headTitle($title);
                     <?php echo $this->escapeHtml($associationMapping['fieldName']) ?>
                 </td>
                 <td>
-                    <a href="<?php echo $this->url('db/metadata', array(), array('query' => array('class' => $associationMapping['targetEntity']))) ?>">
+                    <a href="<?php echo $this->url('dv/entity', array(), array('query' => array('class' => $associationMapping['targetEntity']))) ?>">
                         <?php echo $this->escapeHtml($associationMapping['targetEntity']) ?>
                     </a>
                 </td>

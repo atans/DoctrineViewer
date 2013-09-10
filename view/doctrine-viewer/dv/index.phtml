@@ -8,7 +8,7 @@ $title = $this->translate('Entities');
     <ol>
         <?php foreach ($metadatas as $metadata) :?>
             <li>
-                <a href="<?php echo $this->url('db/metadata', array(), array('query' => array('class' => $metadata->getName()))) ?>">
+                <a href="<?php echo $this->url('dv/entity', array(), array('query' => array('class' => $metadata->getName()))) ?>">
                     <?php echo $this->escapeHtml($metadata->getName()) ?>
                 </a>
             </li>

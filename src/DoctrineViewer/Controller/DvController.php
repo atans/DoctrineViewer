@@ -21,7 +21,7 @@ class DvController extends AbstractActionController
         );
     }
 
-    public function metadataAction()
+    public function entityAction()
     {
         $request = $this->getRequest();
 
