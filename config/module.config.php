@@ -2,23 +2,25 @@
 
 return array(
     'router' => array(
-        'dv' => array(
-            'type' => 'segment',
-            'options' => array(
-                'route' => '/dv[/]',
-                'defaults' => array(
-                    'controller' => 'Application\Controller\Dv',
-                    'action'     => 'index',
+        'routes' => array(
+            'dv' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/dv[/]',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Dv',
+                        'action'     => 'index',
+                    ),
                 ),
-            ),
-            'may_terminate' => true,
-            'child_routes' => array(
-                'metadata' => array(
-                    'type' => 'segment',
-                    'options' => array(
-                        'route' => 'metadata[/]',
-                        'defaults' => array(
-                            'action' => 'metadata'
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'metadata' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => 'metadata[/]',
+                            'defaults' => array(
+                                'action' => 'metadata'
+                            ),
                         ),
                     ),
                 ),
