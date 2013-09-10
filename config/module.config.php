@@ -19,7 +19,7 @@ return array(
                         'options' => array(
                             'route' => 'entity[/]',
                             'defaults' => array(
-                                'action' => 'metadata'
+                                'action' => 'entity'
                             ),
                         ),
                     ),
