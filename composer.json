@@ -1,0 +1,31 @@
+{
+    "name": "atans/doctrine-viewer",
+    "description" : "Doctrine viewer for Zend Framework 2",
+    "type" : "library",
+    "keywords" : [
+        "zf2",
+        "doctrine"
+    ],
+    "homepage": "https://github.com/atans/DoctrineViewer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Atans Chiu",
+            "email": "atans.chiu@gmail.com",
+            "homepage": "https://github.com/atans"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": ">=2.2.*",
+        "doctrine/doctrine-orm-module": "0.8.*@dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "DoctrineViewer": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
+}

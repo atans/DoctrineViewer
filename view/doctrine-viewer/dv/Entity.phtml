@@ -1,0 +1,123 @@
+<?php
+$title = sprintf($this->translate('Entity: %s'), $class);
+$this->headTitle($title);
+?>
+
+    <h3 class="page-header">
+        <a class="btn btn-default" href="<?php echo $this->url('db')?>">
+            <i class="glyphicon glyphicon-arrow-left"></i>
+        </a>
+
+        <?php echo $this->escapeHtml($title) ?>
+    </h3>
+
+    <h4><?php echo $this->translate('Fields') ?></h4>
+<?php if (count($metadata->fieldMappings) > 0): ?>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th><?php echo $this->translate('fieldName') ?></th>
+            <th><?php echo $this->translate('columnName') ?></th>
+            <th><?php echo $this->translate('nullable') ?></th>
+            <th><?php echo $this->translate('type') ?></th>
+            <th><?php echo $this->translate('length') ?></th>
+            <th><?php echo $this->translate('unique') ?></th>
+            <th><?php echo $this->translate('scale') ?></th>
+            <th><?php echo $this->translate('precision') ?></th>
+        </tr>
+        </thead>
+        <?php foreach ($metadata->fieldMappings as $fieldMapping): ?>
+            <tr>
+                <td>
+                    <?php echo $this->escapeHtml($fieldMapping['fieldName']) ?>
+                    <?php echo (isset($fieldMapping['id']) && $fieldMapping['id'] ? '<span class="label label-info">id</span>': '') ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($fieldMapping['columnName']) ?>
+                </td>
+                <td>
+                    <?php echo ($fieldMapping['nullable'] ? '<span class="label label-info">true</span>' : 'false') ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($fieldMapping['type']) ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($fieldMapping['length']) ?>
+                </td>
+                <td>
+                    <?php echo ($fieldMapping['unique'] ? '<span class="label label-info">true</span>': 'false') ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($fieldMapping['scale']) ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($fieldMapping['precision']) ?>
+                </td>
+            </tr>
+        <?php endforeach ?>
+    </table>
+<?php else: ?>
+    <div class="alert alert-info">
+        <?php echo $this->translate('Do not find any fields') ?>
+    </div>
+<?php endif ?>
+
+<?php if (count($metadata->associationMappings) > 0): ?>
+    <h4><?php echo $this->translate('Association Mappings') ?></h4>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th><?php echo $this->translate('fieldName') ?></th>
+            <th><?php echo $this->translate('targetEntity') ?></th>
+            <th><?php echo $this->translate('joinColumns') ?></th>
+            <th><?php echo $this->translate('cascade') ?></th>
+            <th><?php echo $this->translate('inversedBy') ?></th>
+            <th><?php echo $this->translate('mappedBy') ?></th>
+            <th><?php echo $this->translate('isOwningSide') ?></th>
+            <th><?php echo $this->translate('fetch') ?></th>
+            <th><?php echo $this->translate('type') ?></th>
+        </tr>
+        </thead>
+        <?php foreach ($metadata->associationMappings as $associationMapping):
+            ?>
+            <tr>
+                <td>
+                    <?php echo $this->escapeHtml($associationMapping['fieldName']) ?>
+                </td>
+                <td>
+                    <a href="<?php echo $this->url('db/metadata', array(), array('query' => array('class' => $associationMapping['targetEntity']))) ?>">
+                        <?php echo $this->escapeHtml($associationMapping['targetEntity']) ?>
+                    </a>
+                </td>
+                <td>
+                    <?php foreach ($associationMapping['joinColumns'] as $columns): ?>
+                        <?php foreach ($columns as $key => $value): ?>
+                            <?php echo $this->escapeHtml($key) ?> => <?php echo $this->escapeHtml($value) ?><br>
+                        <?php endforeach ?>
+                    <?php endforeach ?>
+                </td>
+                <td>
+                    <?php foreach ($associationMapping['cascade']  as $key => $value): ?>
+                        <?php echo $this->escapeHtml($key) ?> => <?php echo $this->escapeHtml($value) ?><br>
+                    <?php endforeach ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($associationMapping['inversedBy']) ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($associationMapping['mappedBy']) ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($associationMapping['isOwningSide']) ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($associationMapping['fetch']) ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($associationMapping['type']) ?>
+                </td>
+            </tr>
+
+        <?php endforeach ?>
+    </table>
+<?php endif ?>
