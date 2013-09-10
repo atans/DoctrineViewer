@@ -8,7 +8,7 @@ return array(
                 'options' => array(
                     'route' => '/dv[/]',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Dv',
+                        'controller' => 'DoctrineViewer\Controller\Dv',
                         'action'     => 'index',
                     ),
                 ),
@@ -29,7 +29,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Doctrine\Controller\Dv' => 'Doctrine\Controller\DvController',
+            'DoctrineViewer\Controller\Dv' => 'DoctrineViewer\Controller\DvController',
         ),
     ),
     'view_manager' => array(
