@@ -90,11 +90,13 @@ $this->headTitle($title);
                     </a>
                 </td>
                 <td>
-                    <?php foreach ($associationMapping['joinColumns'] as $columns): ?>
-                        <?php foreach ($columns as $key => $value): ?>
-                            <?php echo $this->escapeHtml($key) ?> => <?php echo $this->escapeHtml($value) ?><br>
+                    <?php if (isset($associationMapping['joinColumns'])): ?>
+                        <?php foreach ($associationMapping['joinColumns'] as $columns): ?>
+                            <?php foreach ($columns as $key => $value): ?>
+                                <?php echo $this->escapeHtml($key) ?> => <?php echo $this->escapeHtml($value) ?><br>
+                            <?php endforeach ?>
                         <?php endforeach ?>
-                    <?php endforeach ?>
+                    <?php endif ?>
                 </td>
                 <td>
                     <?php foreach ($associationMapping['cascade']  as $key => $value): ?>
