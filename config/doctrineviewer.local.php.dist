@@ -2,6 +2,9 @@
 
 return array(
     'doctrineviewer' => array(
-        'object_manager_name' => 'doctrine.entitymanager.orm_default',
+        /**
+         *  Doctrine object manager name
+         */
+        // 'object_manager_name' => 'doctrine.entitymanager.orm_default',
     ),
 );
