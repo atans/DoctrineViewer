@@ -30,8 +30,8 @@ class DvController extends AbstractActionController
     public function entityAction()
     {
         $request = $this->getRequest();
+        $class   = $request->getQuery('class');
 
-        $class = $request->getQuery('class');
         if (! strlen($class)) {
             throw new Exception\RuntimeException('class is required');
         }
