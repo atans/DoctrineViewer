@@ -1,0 +1,7 @@
+<?php
+
+return array(
+    'doctrineviewer' => array(
+        'object_manager_name' => 'doctrine.entitymanager.orm_default',
+    ),
+);

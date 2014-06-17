@@ -2,7 +2,7 @@
 
 A simple Doctrine viewer module for Zend Framework 2
 
-Visit `http://path/to/zendframework/dv/`
+Visit `http://path/to/zendframework/dv`
 
 ### Preview
 

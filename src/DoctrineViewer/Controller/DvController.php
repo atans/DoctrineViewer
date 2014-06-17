@@ -1,16 +1,22 @@
 <?php
 namespace DoctrineViewer\Controller;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use DoctrineViewer\Exception;
+use DoctrineViewer\Options\DoctrineViewerInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 
 class DvController extends AbstractActionController
 {
     /**
-     * @var EntityManager
+     * @var EntityManagerInterface
      */
     protected $entityManager;
+
+    /**
+     * @var DoctrineViewerInterface
+     */
+    protected $options;
 
     public function indexAction()
     {
@@ -26,8 +32,8 @@ class DvController extends AbstractActionController
         $request = $this->getRequest();
 
         $class = $request->getQuery('class');
-        if (!$class) {
-            throw new RuntimeException('class is required');
+        if (! strlen($class)) {
+            throw new Exception\RuntimeException('class is required');
         }
 
         $metadata = $this->getEntityManager()->getClassMetadata($class);
@@ -41,12 +47,12 @@ class DvController extends AbstractActionController
     /**
      * Get entityManager
      *
-     * @return EntityManager
+     * @return EntityManagerInterface
      */
     public function getEntityManager()
     {
-        if (!$this->entityManager instanceof EntityManager) {
-            $this->setEntityManager($this->getServiceLocator()->get('doctrine.entitymanager.orm_default'));
+        if (!$this->entityManager instanceof EntityManagerInterface) {
+            $this->setEntityManager($this->getServiceLocator()->get($this->getOptions()->getEntityManagerName()));
         }
         return $this->entityManager;
     }
@@ -54,12 +60,37 @@ class DvController extends AbstractActionController
     /**
      * Set entityManager
      *
-     * @param  EntityManager $entityManager
+     * @param  EntityManagerInterface $entityManager
      * @return DvController
      */
-    public function setEntityManager(EntityManager $entityManager)
+    public function setEntityManager(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
+        return $this;
+    }
+
+    /**
+     * Get options
+     *
+     * @return DoctrineViewerInterface
+     */
+    public function getOptions()
+    {
+        if (! $this->options instanceof DoctrineViewerInterface) {
+            $this->setOptions($this->getServiceLocator()->get('doctrineviewer_module_options'));
+        }
+        return $this->options;
+    }
+
+    /**
+     * Set options
+     *
+     * @param  DoctrineViewerInterface $options
+     * @return DvController
+     */
+    public function setOptions(DoctrineViewerInterface $options)
+    {
+        $this->options = $options;
         return $this;
     }
 }

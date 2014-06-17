@@ -4,9 +4,9 @@ return array(
     'router' => array(
         'routes' => array(
             'dv' => array(
-                'type' => 'segment',
+                'type' => 'literal',
                 'options' => array(
-                    'route' => '/dv[/]',
+                    'route' => '/dv',
                     'defaults' => array(
                         'controller' => 'DoctrineViewer\Controller\Dv',
                         'action'     => 'index',
@@ -15,9 +15,9 @@ return array(
                 'may_terminate' => true,
                 'child_routes' => array(
                     'entity' => array(
-                        'type' => 'segment',
+                        'type' => 'literal',
                         'options' => array(
-                            'route' => 'entity[/]',
+                            'route' => '/entity',
                             'defaults' => array(
                                 'action' => 'entity'
                             ),
