@@ -1,5 +1,5 @@
 <?php
-$title = sprintf($this->translate('Entity: %s'), $class);
+$title = sprintf($this->translate('Entity: %s'), $this->class);
 $this->headTitle($title);
 ?>
 
@@ -12,7 +12,7 @@ $this->headTitle($title);
     </h3>
 
     <h4><?php echo $this->translate('Fields') ?></h4>
-<?php if (count($metadata->fieldMappings) > 0): ?>
+<?php if (count($this->metadata->fieldMappings) > 0): ?>
     <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -26,7 +26,7 @@ $this->headTitle($title);
             <th><?php echo $this->translate('precision') ?></th>
         </tr>
         </thead>
-        <?php foreach ($metadata->fieldMappings as $fieldMapping): ?>
+        <?php foreach ($this->metadata->fieldMappings as $fieldMapping): ?>
             <tr>
                 <td>
                     <?php echo $this->escapeHtml($fieldMapping['fieldName']) ?>
@@ -62,7 +62,7 @@ $this->headTitle($title);
     </div>
 <?php endif ?>
 
-<?php if (count($metadata->associationMappings) > 0): ?>
+<?php if (count($this->metadata->associationMappings) > 0): ?>
     <h4><?php echo $this->translate('Association Mappings') ?></h4>
     <table class="table table-bordered table-hover">
         <thead>
@@ -78,7 +78,7 @@ $this->headTitle($title);
             <th><?php echo $this->translate('type') ?></th>
         </tr>
         </thead>
-        <?php foreach ($metadata->associationMappings as $associationMapping):
+        <?php foreach ($this->metadata->associationMappings as $associationMapping):
             ?>
             <tr>
                 <td>

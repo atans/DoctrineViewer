@@ -4,7 +4,7 @@ $title = $this->translate('Doctrine Viewer');
 
 <h3 class="page-header"><?php echo $this->translate($title) ?></h3>
 
-<?php if(count($metadatas) > 0): ?>
+<?php if(count($this->metadatas) > 0): ?>
     <ol>
         <?php foreach ($metadatas as $metadata) :?>
             <li>
